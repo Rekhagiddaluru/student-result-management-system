@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Result Management System</h1>
+    <h2>Add Student Result</h2>
+    <form>
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" required>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" required>
+        <label for="marks">Marks:</label>
+        <input type="text" id="marks" required>
+        <button type="button" onclick="addResult()">Add Result</button>
+    </form>
+    <h2>Student Results</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+        </tbody>
+    </table>
+    
+    <script>
+        function addResult() {
+            const name = document.getElementById("name").value;
+            const subject = document.getElementById("subject").value;
+            const marks = document.getElementById("marks").value;
+
+            if (name && subject && marks) {
+                const table = document.getElementById("resultTable");
+                const newRow = table.insertRow(table.rows.length);
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                cell1.innerHTML = name;
+                cell2.innerHTML = subject;
+                cell3.innerHTML = marks;
+
+                document.getElementById("name").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("marks").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
